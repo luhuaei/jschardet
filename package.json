@@ -11,16 +11,19 @@
     "url": "https://github.com/aadsm/jschardet.git"
   },
   "types": "index.d.ts",
-  "main": "index.js",
-  "files": ["index.js", "src"],
+  "main": "dist/index.js",
+  "files": ["dist"],
   "devDependencies": {
     "browserify": "~12.0.1",
     "cjstoesm": "^2.1.2",
     "esmock": "^2.1.0",
     "google-closure-compiler": "20151015.0.0",
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "rollup": "^3.9.1",
+    "rollup-plugin-copy": "^3.4.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rollup --config"
   }
 }

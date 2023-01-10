@@ -1,5 +1,6 @@
-export const log = function () { };
+export let log = function () {};
+export let enabled = false;
 export function setLogger(loggerFunction) {
-    exports.enabled = true;
-    exports.log = loggerFunction;
+  enabled = true;
+  log = loggerFunction;
 }
