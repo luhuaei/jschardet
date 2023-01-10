@@ -1,41 +1,11 @@
-/*
- * The Original Code is Mozilla Universal charset detector code.
- *
- * The Initial Developer of the Original Code is
- * Netscape Communications Corporation.
- * Portions created by the Initial Developer are Copyright (C) 2001
- * the Initial Developer. All Rights Reserved.
- *
- * Contributor(s):
- *   António Afonso (antonio.afonso gmail.com) - port to JavaScript
- *   Mark Pilgrim - port to Python
- *   Shy Shalom - original C code
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301  USA
- */
-
-var CharSetGroupProber = require('./charsetgroupprober');
-var Big5Prober = require('./big5prober');
-var UTF8Prober = require('./utf8prober');
-var SJISProber = require('./sjisprober');
-var EUCJPProber = require('./eucjpprober');
-var GB2312Prober = require('./gb2312prober');
-var EUCKRProber = require('./euckrprober');
-var EUCTWProber = require('./euctwprober');
-
+import CharSetGroupProber from "./charsetgroupprober.js";
+import Big5Prober from "./big5prober.js";
+import UTF8Prober from "./utf8prober.js";
+import SJISProber from "./sjisprober.js";
+import EUCJPProber from "./eucjpprober.js";
+import GB2312Prober from "./gb2312prober.js";
+import EUCKRProber from "./euckrprober.js";
+import EUCTWProber from "./euctwprober.js";
 function MBCSGroupProber() {
     CharSetGroupProber.apply(this);
     this._mProbers = [
@@ -47,18 +17,17 @@ function MBCSGroupProber() {
         new Big5Prober(),
         new EUCTWProber()
     ];
-    const supportedCharsetNames = (function() {
+    const supportedCharsetNames = (function () {
         const charsetNames = [];
         for (const prober of this._mProbers) {
-            charsetNames.push(prober.getCharsetName())
+            charsetNames.push(prober.getCharsetName());
         }
         return charsetNames;
     });
-    this.getSupportedCharsetNames = function() {
+    this.getSupportedCharsetNames = function () {
         return supportedCharsetNames;
-    }
+    };
     this.reset();
 }
 MBCSGroupProber.prototype = new CharSetGroupProber();
-
-module.exports = MBCSGroupProber
+export default MBCSGroupProber;
